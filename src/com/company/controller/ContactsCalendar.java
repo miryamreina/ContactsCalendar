@@ -2,6 +2,8 @@ package com.company.controller;
 
 
 import com.company.CommandParser;
+import com.company.Contacts;
+import com.company.Person;
 import com.company.model.Command;
 import com.company.view.Prompt;
 import com.company.view.Message;
@@ -10,6 +12,7 @@ import com.company.view.Message;
 
 public class ContactsCalendar {
     public void Calendar() {
+        Contacts contacts = new Contacts();
 
         boolean end = false;
 
@@ -33,21 +36,40 @@ public class ContactsCalendar {
                     Message.printHelp();
 
                     break;
-                /*case LIST:
-                    list.print();
 
-                    break;
+
                 case ADD:
-                    Message.printLook(currentRoom);
+                   Person person= Prompt.addContact();
+                   contacts.getContact().add(person);
+                    break;
+
+                  case LIST:
+                        Prompt.printList(contacts);
 
                     break;
 
                 case DELETE:
-                    InventoryManager.take(currentRoom, inventory, CommandParser.detecterParameter);
-                    end=true;
+                    if (contacts.getContact().size()==0){
+                        System.out.println("Your list is empty");
+
+
+                    }else{
+                        int position = Prompt.deleteContact();
+                        if (position>=0  && position<contacts.getContact().size()){
+                            contacts.getContact().remove(position);
+                            System.out.println();
+                            System.out.println("Deleted Contact");
+                            System.out.println();
+                            Prompt.printList(contacts);
+                        }else {
+                            System.out.println("There is no contact in that position");
+                        }
+                    }
+
+
                     break;
 
-                    */
+
 
                 case UNKNOWN:
                     errorCounter=errorCounter +1;

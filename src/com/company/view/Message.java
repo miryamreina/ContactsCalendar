@@ -1,5 +1,9 @@
 package com.company.view;
 
+        import com.company.Contacts;
+        import com.company.Person;
+
+        import java.awt.*;
         import java.util.LinkedList;
         import java.util.Random;
 
@@ -38,7 +42,6 @@ public class Message {
         }
         return errorCounter;
     }
-
 
 
 

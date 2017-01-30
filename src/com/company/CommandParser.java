@@ -14,34 +14,21 @@ public class CommandParser {
             return Command.HELP;
         }
 
-
         if (text.equalsIgnoreCase("list") || text.equalsIgnoreCase("l")) {
             return Command.LIST;
         }
-
-        if(text.toLowerCase().startsWith("delete ")){
-            String takeArgument=text.toLowerCase().replace("delete ", "");
-            detecterParameter = takeArgument;
+        if (text.equalsIgnoreCase("add") || text.equalsIgnoreCase("a")) {
+            return Command.ADD;
+        }
+        if (text.equalsIgnoreCase("delete") || text.equalsIgnoreCase("d")) {
             return Command.DELETE;
         }
 
-        if(text.toLowerCase().startsWith("d ")){
-            String takeArgument=text.toLowerCase().replace("d ", "");
-            detecterParameter = takeArgument;
-            return Command.DELETE;
-        }
 
-        if(text.toLowerCase().startsWith("add ")){
-            String dropArgument=text.toLowerCase().replace("add ", "");
-            detecterParameter = dropArgument;
-            return Command.ADD;
-        }
 
-        if(text.toLowerCase().startsWith("a ")){
-            String dropArgument=text.toLowerCase().replace("a ", "");
-            detecterParameter = dropArgument;
-            return Command.ADD;
-        }
+
+
+
 
         return Command.UNKNOWN;
 
