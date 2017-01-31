@@ -8,8 +8,8 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Prompt {
-    public static void print() {
-        System.out.print("> ");
+    public static void print(int contactnumber) {
+        System.out.print("("+contactnumber+")> ");
     }
 
     public static String read() {

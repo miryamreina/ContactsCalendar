@@ -1,6 +1,10 @@
 package com.company;
 
+import com.company.util.ReadRecord;
+
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Contacts {
 
@@ -19,7 +23,7 @@ public class Contacts {
     public void add(Person Person) {
         this.contact.add(Person);
     }
-    public LinkedList<Person> getPersonas() {
+    public LinkedList<Person> getPerson() {
         return contact;
     }
 
@@ -36,4 +40,46 @@ public class Contacts {
         this.contact = contact;
     }
 
+    public void readRecord() throws IOException {
+        List<String>names=new LinkedList<>();
+        for (int i = 0; i <contact.size() ; i++) {
+            Person person=contact.get(i);
+            names.add(person.getName());
+
+        }
+
+
+        List<String>phones=new LinkedList<>();
+        for (int i = 0; i <contact.size() ; i++) {
+            Person person=contact.get(i);
+            phones.add(person.getPhone());
+
+        }
+
+        ReadRecord.createFile("Names.txt", names);
+        ReadRecord.createFile("Phones.txt", phones);
+    }
+
+public void readToArchive(){
+
+        if (ReadRecord.readFile("names.txt")!=null) {
+
+
+            List<String> names = ReadRecord.readFile("names.txt");
+            List<String> phones = ReadRecord.readFile("phones.txt");
+
+
+            for (int i = 0; i < names.size(); i++) {
+                Person person = new Person();
+                person.setName(names.get(i));
+
+                person.setPhone(phones.get(i));
+                contact.add(person);
+            }
+
+        }
 }
+}
+
+
+

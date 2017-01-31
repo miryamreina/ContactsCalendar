@@ -8,17 +8,20 @@ import com.company.model.Command;
 import com.company.view.Prompt;
 import com.company.view.Message;
 
+import java.io.IOException;
 
 
 public class ContactsCalendar {
-    public void Calendar() {
-        Contacts contacts = new Contacts();
 
+    Contacts contacts = new Contacts();
+    public void Calendar() throws IOException {
+
+        contacts.readToArchive();
         boolean end = false;
 
 
         while (!end) {
-            Prompt.print();
+            Prompt.print(contacts.getContact().size());
             String command = Prompt.read();
             Command com = CommandParser.parse(command);
             int errorCounter=0;
@@ -26,7 +29,7 @@ public class ContactsCalendar {
             switch (com) {
 
                 case QUIT:
-
+                    contacts.readRecord();
                     end = true;
 
                     break;
